@@ -6,6 +6,7 @@ import org.bouncycastle.jcajce.provider.symmetric.ARC4;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import static espminvest.poo.cambio.common.constants.Constants.BASE_URL;
 
@@ -23,7 +24,7 @@ public interface CambioController {
     @GetMapping(BASE_URL + "/{currencyId}/{date}")
     EstimateBean getEstimate(@PathVariable String currencyId, @PathVariable String date);
 
-    @GetMapping(BASE_URL + "/")
-    List<EstimateBean> getEstimates(String currencyId, String dateInit, String dateEnd);
+    @GetMapping(BASE_URL)
+    List<EstimateBean> getEstimates(@RequestParam String currencyId, @RequestParam String dateInit, @RequestParam String dateEnd);
 
 }
